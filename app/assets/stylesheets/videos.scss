@@ -1,0 +1,35 @@
+*{
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+.header{
+  width: 100%;
+  min-height: 82px;
+  background-color: black;
+}
+
+.main{
+  height: 100vh;
+  &__search{
+    width: 100%;
+    min-height: 100px;
+    .search-input{
+      margin-top: 50px;
+      margin-left: 200px;
+      height: 60px;
+      width: 60%;
+    }
+    .search-btn{
+      height: 10vh;
+      width: 5%;
+    }
+  }
+}
+
+.footer{
+  min-height: 82px;
+  padding: 60px 0;
+  background-color: black;
+}
