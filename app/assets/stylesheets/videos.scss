@@ -11,7 +11,9 @@
 }
 
 .main{
-  height: 100vh;
+  height: 100%;
+  width: 100%;
+  background-color: silver;
   &__search{
     width: 100%;
     min-height: 100px;
@@ -27,9 +29,18 @@
     }
   }
 }
+.content{
+  min-height: 100vh;
+  position: relative;
+  &__data{
+    
+  }
+ }
 
 .footer{
   min-height: 82px;
   padding: 60px 0;
   background-color: black;
+  position:  absolute;
+  width: 100%;
 }

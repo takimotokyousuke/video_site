@@ -4,10 +4,11 @@
     .header__navbar__signup
       - if user_signed_in?
         =link_to"ログアウト",destroy_user_session_path
-        =link_to"マイページ"
+        =link_to"マイページ","/users/#{current_user.id}"
+      
       - else
         =link_to '新規登録', new_user_session_path
-        =link_to 'ログイン',user_session_path    
+        =link_to 'ログイン', user_session_path    
     .header__navbar__category
       =link_to'カテゴリー'
   .main
@@ -15,18 +16,11 @@
       =form_with url:"#", local: true do |f|
         =f.text_field :keyword, placeholder:"検索する",class:"search-input"
         =f.submit '検索', class:'sear3ch-btn'
-    .main__content__video
-      .main__content__video__table
-        %table
-          %tbody
-            %tr
-              %th 動画名
-              %td 引退します
-            %tr 
-              %th チャンネル名
-              %td TV
-            %tr
-              %th 概要欄
-              %td お話
+    
+  .content
+    .content__left
+    
+    .content__right
+        
   .footer
     =link_to'利用規約'
