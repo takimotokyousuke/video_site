@@ -32,8 +32,25 @@
 .content{
   min-height: 100vh;
   position: relative;
-  &__data{
-    
+  &__left{
+    width: 50%;
+    height: 100%;
+    #move{
+      margin-top: 100px;
+      margin-left: 50px;
+    }
+    &__input{
+      width: 100px;
+      height: 200px;
+      position: absolute;
+      top: 600px;
+      left: 17%;
+      input{
+        font-size: 10px;
+        width:  200px;
+        padding-bottom: 50px;
+      }
+    }
   }
  }
 

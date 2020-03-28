@@ -15,11 +15,16 @@
     .main__search
       =form_with url:"#", local: true do |f|
         =f.text_field :keyword, placeholder:"検索する",class:"search-input"
-        =f.submit '検索', class:'sear3ch-btn'
+        =f.submit '検索', class:'search-btn'
     
   .content
     .content__left
-      
+      #move
+      .content__left__input
+        %input{:type => "text",:id => "url",data: { persist: 'garlic' }}/
+        %br/
+        %input{:type => "submit", :value => "保存"}/
+        %br/
     .content__right
         
   .footer
