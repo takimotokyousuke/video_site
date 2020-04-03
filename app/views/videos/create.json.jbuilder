@@ -1,0 +1,1 @@
+json.text @video.text

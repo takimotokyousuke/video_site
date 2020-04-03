@@ -32,6 +32,8 @@
 .content{
   min-height: 100vh;
   position: relative;
+  display: flex;
+  overflow: scroll;
   &__left{
     width: 50%;
     height: 100%;
@@ -51,6 +53,11 @@
         padding-bottom: 50px;
       }
     }
+  }
+  &__right{
+    background-color: turquoise;
+    width: 50%;
+    height: 100%;
   }
  }
 

@@ -41,7 +41,6 @@ function onYouTubeIframeAPIReady(){
 window.onload = function(){
   
   const url = document.getElementById('url');
-
   let videoId;
   // url入力フォームの入力されたイベントを監視
   url.addEventListener('input', () => {
@@ -59,7 +58,44 @@ window.onload = function(){
     // 指定さらた動画IDのサムネイルを読み込み、動画を再生する準備をする。
     ytPlayer.cueVideoById({videoId: videoId});
   });
-}
+
+};
+
+$(function(){
+  function buildHTML(video){
+    var build =
+      `<div class="content__right">
+        <div class="content__right__list">
+          <div class=".content__right__list__move">
+            ${video.text}
+          </div>
+        </div>
+      </div>`
+  }
+
+  $('.save-btn').on('submit',function(e){
+    e.preventDefault()
+    var formData = new FormData(this);
+    var url = $(this).attr('action');
+    $.ajax({
+      url: url,
+      type: "POST",
+      data: formData,
+      dataType: 'json',
+      processData: false,
+      contentType: false
+    })
+    .done(function(data){
+      alert('アンパンマン');
+      var html = buildHTML(data);
+    })
+    .fail(function(){
+      alert('保存されない');
+    })
+  });
+});
+
+
 
 
 
