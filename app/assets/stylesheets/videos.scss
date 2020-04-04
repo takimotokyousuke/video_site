@@ -57,7 +57,15 @@
   &__right{
     background-color: turquoise;
     width: 50%;
-    height: 100%;
+    &__list{
+      border: solid;
+      height: 100%;
+      overflow: scroll;
+      &__move{
+        height: 50px;
+        width: 100px;
+      }
+    }
   }
  }
 

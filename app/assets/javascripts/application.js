@@ -27,7 +27,7 @@ function onYouTubeIframeAPIReady(){
   document.getElementById("move").style.display ="none";
    ytPlayer = new YT.Player('move', // 埋め込む場所の指定 
    {
-      width: 640,
+      width: 500,
       height: 390,
       // videoId: 'gvSeLq-3Azg', // YouTubeのID
       //イベントの設定
@@ -58,22 +58,23 @@ window.onload = function(){
     // 指定さらた動画IDのサムネイルを読み込み、動画を再生する準備をする。
     ytPlayer.cueVideoById({videoId: videoId});
   });
-
 };
 
 $(function(){
   function buildHTML(video){
-    var build =
+    var build = 
       `<div class="content__right">
         <div class="content__right__list">
-          <div class=".content__right__list__move">
+          <div class="content__right__list__move">
+            ${move}
             ${video.text}
           </div>
         </div>
       </div>`
+      return build
   }
 
-  $('.save-btn').on('submit',function(e){
+  $('.new_video').on('submit',function(e){
     e.preventDefault()
     var formData = new FormData(this);
     var url = $(this).attr('action');
@@ -85,10 +86,14 @@ $(function(){
       processData: false,
       contentType: false
     })
+
     .done(function(data){
-      alert('アンパンマン');
       var html = buildHTML(data);
+      $('.content').append(html);
+      $('form')[0].reset();
+      alert('アンパンマン');
     })
+
     .fail(function(){
       alert('保存されない');
     })

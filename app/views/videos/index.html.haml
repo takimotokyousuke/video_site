@@ -21,17 +21,19 @@
     .content__left
       #move
       .content__left__input
-        -# %input{:type => "text",:id => "url"}/
-        -# %br/
-        -# %input{:type => "submit", :value => "保存",class:'save-btn'}/
-        -# %br/
+        動画URL入力
         =form_for @video,url:'/videos' ,id: 'url',remote: true do |f|
           =f.text_field 'text',id: 'url'
+          タイトル
+          =f.text_field 'title',id: 'url'
           =f.submit '保存',class: 'save-btn'
+          
+          
+          
 
     .content__right
       .content__right__list
         .content__right__list__move
-
+          
   .footer
     =link_to'利用規約'

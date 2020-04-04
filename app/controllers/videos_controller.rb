@@ -35,6 +35,6 @@ class VideosController < ApplicationController
   private
 
   def video_params
-    params.require(:video).permit(:text).merge(user_id: current_user.id)
+    params.require(:video).permit(:text,:title).merge(user_id: current_user.id)
   end
 end
