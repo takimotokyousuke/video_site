@@ -60,17 +60,17 @@ window.onload = function(){
   });
 };
 
+
 $(function(){
+
   function buildHTML(video){
     var build = 
-      `<div class="content__right">
-        <div class="content__right__list">
-          <div class="content__right__list__move">
-            ${move}
-            ${video.text}
-          </div>
-        </div>
-      </div>`
+      `
+        <div class="content__right__list__move"></div>
+          
+        <div id="text" class="content__right__list__move__text"></div>
+          ${video.text}
+        `
       return build
   }
 
@@ -89,16 +89,27 @@ $(function(){
 
     .done(function(data){
       var html = buildHTML(data);
-      $('.content').append(html);
+      $('.content__right__list').append(html);
       $('form')[0].reset();
-      alert('アンパンマン');
-    })
+      alert('保存できました');
 
+      let playerId = "text";
+      let videoId = data.text.split('v=')[1];
+      player = new YT.Player(
+        playerId,{
+          width: "300",
+          height:"150",
+          videoId: videoId
+        }
+      )
+    })
+   
     .fail(function(){
       alert('保存されない');
     })
   });
 });
+
 
 
 

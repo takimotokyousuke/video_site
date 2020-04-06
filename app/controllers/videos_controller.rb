@@ -1,7 +1,8 @@
 class VideosController < ApplicationController
   
   def index
-    @video = Video.new
+    @video = Video.new(params[:id])
+
   end
 
   def new

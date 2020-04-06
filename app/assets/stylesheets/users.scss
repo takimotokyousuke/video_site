@@ -8,6 +8,17 @@
   width: 100%;
   min-height: 82px;
   background-color: black;
+  &__navbar{
+    a{
+      margin-left: 30px;
+      line-height: 82px;
+      color: turquoise;
+      text-decoration: none;
+    }
+    a:hover{
+      color: red;
+    }
+  }
 }
 
 .main{

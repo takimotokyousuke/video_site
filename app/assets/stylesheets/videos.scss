@@ -8,6 +8,19 @@
   width: 100%;
   min-height: 82px;
   background-color: black;
+  &__navbar{
+    display: flex;
+    justify-content: space-between;
+    a{
+      margin-left: 30px;
+      line-height: 82px;
+      color: turquoise;
+      text-decoration: none;
+    }
+    a:hover{
+      color: red;
+    }
+  }
 }
 
 .main{
@@ -63,7 +76,9 @@
       overflow: scroll;
       &__move{
         height: 50px;
-        width: 100px;
+      }
+      #text{
+        border: solid;
       }
     }
   }

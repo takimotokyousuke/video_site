@@ -1,16 +1,14 @@
 .body
   .header
     .header__navbar
-    .header__navbar__signup
-      - if user_signed_in?
-        =link_to"ログアウト",destroy_user_session_path
-        =link_to"マイページ","/users/#{current_user.id}"
-      
-      - else
-        =link_to '新規登録', new_user_session_path
-        =link_to 'ログイン', user_session_path    
-    .header__navbar__category
-      =link_to'カテゴリー'
+      .header__navbar__sign
+        - if user_signed_in?
+          =link_to"ログアウト",destroy_user_session_path,class:"signup"
+          =link_to"マイページ","/users/#{current_user.id}",class:"mypage"
+        
+        - else
+          =link_to '新規登録', new_user_session_path,class:"signup"
+          =link_to 'ログイン', user_session_path,class:"mypage"
   .main
     .main__search
       =form_with url:"#", local: true do |f|
@@ -33,7 +31,6 @@
 
     .content__right
       .content__right__list
-        .content__right__list__move
+        
           
   .footer
-    =link_to'利用規約'

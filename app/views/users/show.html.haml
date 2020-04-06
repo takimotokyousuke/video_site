@@ -1,10 +1,10 @@
 
 .header
   .header__navbar
-  .header__navbar__signup
-    - if user_signed_in?
-      =link_to"ログアウト",destroy_user_session_path
-      =link_to"top",root_path
+    .header__navbar__signup
+      - if user_signed_in?
+        =link_to"ログアウト",destroy_user_session_path
+        =link_to"トップページ",root_path
 .main
   .main__left
   .main__right
@@ -31,4 +31,4 @@
               %th 概要欄
               %td お話
 .footer
-  =link_to'利用規約' 
+  
