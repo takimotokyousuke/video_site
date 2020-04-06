@@ -1,26 +1,36 @@
 .body
   .header
-    .header__navbar　
-    .header__navbar__signup
-      - if user_signed_in?
-        =link_to"ログアウト",destroy_user_session_path
-        =link_to"マイページ","/users/#{current_user.id}"
-      
-      - else
-        =link_to '新規登録', new_user_session_path
-        =link_to 'ログイン', user_session_path    
-    .header__navbar__category
-      =link_to'カテゴリー'
+    .header__navbar
+      .header__navbar__sign
+        - if user_signed_in?
+          =link_to"ログアウト",destroy_user_session_path,class:"signup"
+          =link_to"マイページ","/users/#{current_user.id}",class:"mypage"
+        
+        - else
+          =link_to '新規登録', new_user_session_path,class:"signup"
+          =link_to 'ログイン', user_session_path,class:"mypage"
   .main
     .main__search
       =form_with url:"#", local: true do |f|
         =f.text_field :keyword, placeholder:"検索する",class:"search-input"
-        =f.submit '検索', class:'sear3ch-btn'
+        =f.submit '検索', class:'search-btn'
     
   .content
     .content__left
-    
+      #move
+      .content__left__input
+        動画URL入力
+        =form_for @video,url:'/videos' ,id: 'url',remote: true do |f|
+          =f.text_field 'text',id: 'url'
+          タイトル
+          =f.text_field 'title',id: 'url'
+          =f.submit '保存',class: 'save-btn'
+          
+          
+          
+
     .content__right
+      .content__right__list
         
+          
   .footer
-    =link_to'利用規約'

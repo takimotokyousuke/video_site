@@ -8,6 +8,19 @@
   width: 100%;
   min-height: 82px;
   background-color: black;
+  &__navbar{
+    display: flex;
+    justify-content: space-between;
+    a{
+      margin-left: 30px;
+      line-height: 82px;
+      color: turquoise;
+      text-decoration: none;
+    }
+    a:hover{
+      color: red;
+    }
+  }
 }
 
 .main{
@@ -32,8 +45,43 @@
 .content{
   min-height: 100vh;
   position: relative;
-  &__data{
-    
+  display: flex;
+  overflow: scroll;
+  &__left{
+    width: 50%;
+    height: 100%;
+    #move{
+      margin-top: 100px;
+      margin-left: 50px;
+    }
+    &__input{
+      width: 100px;
+      height: 200px;
+      position: absolute;
+      top: 600px;
+      left: 17%;
+      input{
+        font-size: 10px;
+        width:  200px;
+        padding-bottom: 50px;
+      }
+    }
+  }
+  &__right{
+    background-color: turquoise;
+    width: 50%;
+    &__list{
+      border: solid;
+      height: 100%;
+      overflow: scroll;
+      &__move{
+        height: 50px;
+        width: 100%;
+      }
+      #text{
+        border: solid;
+      }
+    }
   }
  }
 

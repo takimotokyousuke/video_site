@@ -8,6 +8,17 @@
   width: 100%;
   min-height: 82px;
   background-color: black;
+  &__navbar{
+    a{
+      margin-left: 30px;
+      line-height: 82px;
+      color: turquoise;
+      text-decoration: none;
+    }
+    a:hover{
+      color: red;
+    }
+  }
 }
 
 .main{
@@ -26,7 +37,7 @@
     &__video{
       height: 30%;
       &__table{
-        padding-top: 300px;
+        padding-top: 100px;
         margin-bottom: 20px;
         table{
           height: 375px;
