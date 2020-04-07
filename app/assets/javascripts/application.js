@@ -67,10 +67,10 @@ $(function(){
     var build = 
       `
         <div class="content__right__list__move"></div>
-          
-        <div id="text" class="content__right__list__move__text"></div>
-          ${video.text}
-        `
+          ${video.title}
+          <div id="text" class="content__right__list__move__text"></div>
+            ${video.text}
+      `
       return build
   }
 
@@ -97,8 +97,8 @@ $(function(){
       let videoId = data.text.split('v=')[1];
       player = new YT.Player(
         playerId,{
-          width: "300",
-          height:"150",
+          width: "500",
+          height:"390",
           videoId: videoId
         }
       )
