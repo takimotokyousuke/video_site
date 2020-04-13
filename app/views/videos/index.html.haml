@@ -31,6 +31,9 @@
 
     .content__right
       .content__right__list
-        
-          
+        .content__right__list__move
+          - if @video.text.present?
+            %p.content__right__list__move__text{data: {video: {id: @video.id}}}
+              - @video.text.each do |video|
+                =video.text
   .footer

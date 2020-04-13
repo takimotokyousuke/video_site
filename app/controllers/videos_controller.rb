@@ -1,8 +1,7 @@
 class VideosController < ApplicationController
-  
-  def index
-    @video = Video.new(params[:id])
 
+  def index
+    @video = Video.new
   end
 
   def new
@@ -11,11 +10,14 @@ class VideosController < ApplicationController
   def create 
     @video = Video.new(video_params)
     if @video.save
-      # binding.pry
       respond_to do |format|
         format.json
       end
+    else
+      flash.now[:alert] = '保存できません'
+      redirect_to :index
     end
+
   end
 
   def show
@@ -38,4 +40,5 @@ class VideosController < ApplicationController
   def video_params
     params.require(:video).permit(:text,:title).merge(user_id: current_user.id)
   end
+
 end
