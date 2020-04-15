@@ -50,5 +50,6 @@ test:
 production:
   <<: *default
   database: vedeo_site_production
-  username: vedeo_site
-  password: <%= ENV['VEDEO_SITE_DATABASE_PASSWORD'] %>
+  username: root
+  password: <%= ENV['DATABASE_PASSWORD'] %>
+  socket: /var/lib/mysql/mysql.sock
