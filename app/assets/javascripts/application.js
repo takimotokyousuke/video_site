@@ -29,7 +29,6 @@ function onYouTubeIframeAPIReady(){
    {
       width: 500,
       height: 390,
-      // videoId: 'gvSeLq-3Azg', // YouTubeのID
       //イベントの設定
       events: {
           'onReady': onPlayerReady  // プレーヤーの準備ができたときに実行
@@ -48,13 +47,13 @@ window.onload = function(){
     // urlのv=以降が動画id
     videoId = url.value.split('v=')[1];
     // 正しいurlの形式だったとき
-    // if (videoId) {
-    //   // &=クエリパラーメターがついていることがあるので取り除く
-    //   const ampersandPosition = videoId.indexOf('&');
-    //   if(ampersandPosition != -1) {
-    //       videoId = videoId.substring(0, ampersandPosition);
-    //   }
-    // }
+    if (videoId) {
+      // &=クエリパラーメターがついていることがあるので取り除く
+      const ampersandPosition = videoId.indexOf('&');
+      if(ampersandPosition != -1) {
+          videoId = videoId.substring(0, ampersandPosition);
+      }
+    }
     // 指定さらた動画IDのサムネイルを読み込み、動画を再生する準備をする。
     ytPlayer.cueVideoById({videoId: videoId});
   });
@@ -77,7 +76,6 @@ $(function(){
     var build = 
       `
         <div id="title"class="content__right__list__move"></div>
-          ${video.id}
           ${video.title}
           <div id="text" class="content__right__list__move__text"></div>
             
