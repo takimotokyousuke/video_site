@@ -66,21 +66,19 @@ function onPlayerReady(event) {
   // 動画再生
 event.target.playVideo();
 }
-
-
-
-
 $(function(){
 
   function buildHTML(video){
-    var build = 
+    var html = 
       `
         <div id="title"class="content__right__list__move"></div>
-          ${video.title}
-          <div id="text" class="content__right__list__move__text"></div>
-            
+          
+        <div id="text" class="content__right__list__move__text"></div>
+          <tr>
+            <td>${video.title}</td>
+          </th>
       `
-      return build
+      return html;
   }
 
   $('#new_video').on('submit',function(e){
@@ -106,110 +104,113 @@ $(function(){
       let videoId = data.text.split('v=')[1];
       player = new YT.Player(
         playerId,{
-          width: "500",
-          height:"390",
+          width: "700",
+          height:"450",
           videoId: videoId
         }
       )
-      
-      
     })
 
     .fail(function(){
-      alert('保存されない');
+      alert('同じ動画の保存はできません');
     })
   });
 });
 
+window.onYouTubePlayerAPIReady = function() {
+let videoId = $(this).find("[id^='video_id_']").val()
+// 挿入先となるdivのid
+let playerId = "move";
+// youtubeの動画ID("v="以降の11桁)
+let youtubeId = (String(videoId)).split('v=')[1];
+
+Player = new YT.Player( 
+  playerId,{
+  width: 500,
+  height: 390,
+  videoId: youtubeId,
+  events: {
+      'onReady': onPlayerReady  
+  }
+}
+);
+}
 
 
+//プレーヤーの状態が変更された時
+function onPlayerStateChange(event){
+  // 現在のプレーヤーの状態を取得
+  var ytStatus = event.data;
+  // 再生終了した時
+  if (ytStatus == YT.PlayerState.ENDED) {
+    console.log('再生終了');
+    //動画再生
+    event.target.playVideo();
+  }
+  // 再生中の時
+  if (ytStatus == YT.PlayerState.PLAYING) {
+    console.log('再生中');
+  }
+  //停止中の時
+  if (ytStatus == YT.PlayerState.PAUSED){
+    console.log('停止中');
+  }
+  //バッファリング中の時
+  if (ytStatus == YT.PlayerState.BUFFERING){
+    console.log('バッファリング');
+    }
+  //頭出し済みの時
+  if (ytStatus == YT.PlayerState.CUED){
+    console.log('頭出し済み');
+  }
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
-// //プレーヤーの状態が変更された時
-// function onPlayerStateChange(event){
-//   // 現在のプレーヤーの状態を取得
-//   var ytStatus = event.data;
-//   // 再生終了した時
-//   if (ytStatus == YT.PlayerState.ENDED) {
-//     console.log('再生終了');
-//     //動画再生
-//     event.target.playVideo();
-//   }
-//   // 再生中の時
-//   if (ytStatus == YT.PlayerState.PLAYING) {
-//     console.log('再生中');
-//   }
-//   //停止中の時
-//   if (ytStatus == YT.PlayerState.PAUSED){
-//     console.log('停止中');
-//   }
-//   //バッファリング中の時
-//   if (ytStatus == YT.PlayerState.BUFFERING){
-//     console.log('バッファリング');
-//     }
-//   //頭出し済みの時
-//   if (ytStatus == YT.PlayerState.CUED){
-//     console.log('頭出し済み');
-//   }
-// }
-
-// $(function() {
-//   // 再生
-//    $('#play').click(function() {
-//      ytPlayer.playVideo();
-//    });
-//  // 一時停止
-//  $('#pause').click(function() {
-//         ytPlayer.pauseVideo();
-//   });
-//  // 1分前へ
-//  $('#prev').click(function() {
-//      // 現在の再生時間取得
-//         var currentTime = ytPlayer.getCurrentTime();
-//         // シークバーの移動
-//      ytPlayer.seekTo(currentTime - 60);
-//   });
-//  // 1分先へ
-//  $('#next').click(function() {
-//      // 現在の再生時間取得
-//         var currentTime = ytPlayer.getCurrentTime();
-//         // シークバーの移動
-//      ytPlayer.seekTo(currentTime + 60);
-//   });
-//  // 音量アップ(+10)
-//    $('#volup').click(function() {
-//         // 現在の音量取得
-//       var currentVol = ytPlayer.getVolume();
-//       ytPlayer.setVolume(currentVol + 10);
-//     });
-//  // 音量ダウン(-10)
-//    $('#voldown').click(function() {
-//       // 現在の音量取得
-//       var currentVol = ytPlayer.getVolume();
-//       ytPlayer.setVolume(currentVol - 10);
-//     });
-//  // ミュート
-//  $('#mute').click(function() {
-//      // ミュートされているかどうか
-//         if(ytPlayer.isMuted()) {
-//             // ミュートの解除
-//           ytPlayer.unMute();
-//       } else {
-//             // ミュート
-//          ytPlayer.mute();
-//         }
-//    });
-// });
+$(function() {
+  // 再生
+   $('#play').click(function() {
+     ytPlayer.playVideo();
+   });
+ // 一時停止
+ $('#pause').click(function() {
+        ytPlayer.pauseVideo();
+  });
+ // 1分前へ
+ $('#prev').click(function() {
+     // 現在の再生時間取得
+        var currentTime = ytPlayer.getCurrentTime();
+        // シークバーの移動
+     ytPlayer.seekTo(currentTime - 60);
+  });
+ // 1分先へ
+ $('#next').click(function() {
+     // 現在の再生時間取得
+        var currentTime = ytPlayer.getCurrentTime();
+        // シークバーの移動
+     ytPlayer.seekTo(currentTime + 60);
+  });
+ // 音量アップ(+10)
+   $('#volup').click(function() {
+        // 現在の音量取得
+      var currentVol = ytPlayer.getVolume();
+      ytPlayer.setVolume(currentVol + 10);
+    });
+ // 音量ダウン(-10)
+   $('#voldown').click(function() {
+      // 現在の音量取得
+      var currentVol = ytPlayer.getVolume();
+      ytPlayer.setVolume(currentVol - 10);
+    });
+ // ミュート
+ $('#mute').click(function() {
+     // ミュートされているかどうか
+        if(ytPlayer.isMuted()) {
+            // ミュートの解除
+          ytPlayer.unMute();
+      } else {
+            // ミュート
+         ytPlayer.mute();
+        }
+   });
+});
 
 
