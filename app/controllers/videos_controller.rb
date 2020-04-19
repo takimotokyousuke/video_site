@@ -20,7 +20,6 @@ class VideosController < ApplicationController
       flash.now[:alert] = '同じ動画の保存はできません'
       redirect_to :index
     end
-
   end
 
   def show

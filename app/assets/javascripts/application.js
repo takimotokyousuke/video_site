@@ -27,8 +27,8 @@ function onYouTubeIframeAPIReady(){
   document.getElementById("move").style.display ="none";
    ytPlayer = new YT.Player('move', // 埋め込む場所の指定 
    {
-      width: 500,
-      height: 390,
+      width: 500,  //動画の高さ
+      height: 390,  //動画の幅
       //イベントの設定
       events: {
           'onReady': onPlayerReady  // プレーヤーの準備ができたときに実行
@@ -46,19 +46,10 @@ window.onload = function(){
     move.style.display ="block";
     // urlのv=以降が動画id
     videoId = url.value.split('v=')[1];
-    // 正しいurlの形式だったとき
-    if (videoId) {
-      // &=クエリパラーメターがついていることがあるので取り除く
-      const ampersandPosition = videoId.indexOf('&');
-      if(ampersandPosition != -1) {
-          videoId = videoId.substring(0, ampersandPosition);
-      }
-    }
     // 指定さらた動画IDのサムネイルを読み込み、動画を再生する準備をする。
     ytPlayer.cueVideoById({videoId: videoId});
   });
 };
-
 var playerReady = false;
 // プレーヤーの準備ができた
 function onPlayerReady(event) {
@@ -66,6 +57,7 @@ function onPlayerReady(event) {
   // 動画再生
 event.target.playVideo();
 }
+
 $(function(){
 
   function buildHTML(video){
