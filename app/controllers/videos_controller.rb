@@ -2,6 +2,9 @@ class VideosController < ApplicationController
 
   def index
     @video = Video.new
+    # if user_signed_in?
+    #   gon.videos = @video.text
+    # end
   end
 
   def new
@@ -14,10 +17,9 @@ class VideosController < ApplicationController
         format.json
       end
     else
-      flash.now[:alert] = '保存できません'
+      flash.now[:alert] = '同じ動画の保存はできません'
       redirect_to :index
     end
-
   end
 
   def show
