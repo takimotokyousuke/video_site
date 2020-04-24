@@ -13,6 +13,19 @@
 ・検索できるようにする
 ・機能追加
 
+
+# DB設計
+## usersテーブル
+|Column|Type|Options|
+|------|----|-------|
+|user_id|integer|null|
+|name|string|
+|content|string|
+|chat_id|integer|
+### Association
+- belongs_to :user
+- belongs_to :chat
+
 # 制作背景
 
 　・Javascript勉強のため。
@@ -22,7 +35,7 @@
 
 
 
-<!-- 改善点 -->未完成
+# 未完成
 ・非同期でjsonとjsが同時に行われてしまっているので2回ずつデータベースに保存されてしまう。
 ・マイページで動画の編集をできる様にする。
 ・検索で保存した動画を取り出せる様にする。
