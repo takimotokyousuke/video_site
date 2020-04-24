@@ -15,16 +15,26 @@
 
 
 # DB設計
+
+
 ## usersテーブル
 |Column|Type|Options|
 |------|----|-------|
-|user_id|integer|null|
-|name|string|
-|content|string|
-|chat_id|integer|
+|password|string|null: false|
+|email|string|null: false|
+|name|string|null: false|
+### Association
+- has_many :videos
+
+## videoテーブル
+|Column|Type|Options|
+|------|----|-------|
+|user_id|integer|
+|text|string|null: false|
+|title|string|null: false|
 ### Association
 - belongs_to :user
-- belongs_to :chat
+
 
 # 制作背景
 
